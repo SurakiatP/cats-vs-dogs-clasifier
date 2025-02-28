@@ -182,20 +182,17 @@ Contributions are welcome! To contribute:
 
 Please ensure that the pipeline and tests pass before submitting your PR.
 
----
-
-## License
-
-This project is licensed under the **MIT License**.  
-See the [LICENSE](LICENSE) file for more details.
+## 🤝 Contributing
+Feel free to fork the repository and submit a pull request with improvements.
 
 ---
 
-## Contact
-
-For any questions or suggestions, please contact:  
-[Your Name](mailto:your-email@example.com)
+## 📜 License
+This project is licensed under the MIT License.
 
 ---
 
-Happy Coding!
+## ✨ Contact
+For questions, reach out at: [surakiat.0723@gmail.com] or connect on [LinkedIn](https://www.linkedin.com/in/surakiat-kansa-ard-171942351/)
+
+---
