@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Machine%20Learning%20Projects/cat-vs-dog-classifier/mlruns/225209517847558010/5c23c24c494b45ec891d5d5b0c32e8ae/artifacts
+end_time: 1740640808364
+entry_point_name: ''
+experiment_id: '225209517847558010'
+lifecycle_stage: active
+run_id: 5c23c24c494b45ec891d5d5b0c32e8ae
+run_name: valuable-ape-187
+run_uuid: 5c23c24c494b45ec891d5d5b0c32e8ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740640315244
+status: 3
+tags: []
+user_id: parks

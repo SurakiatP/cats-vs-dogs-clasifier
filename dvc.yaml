@@ -1,0 +1,26 @@
+stages:
+  prepare_data:
+    cmd: python -m data.data_prep
+    deps:
+      - data/data_prep.py
+      - data/raw/training_set/training_set
+      - data/raw/test_set/test_set
+    outs:
+      - data/processed
+
+  train:
+    cmd: python -m models.train
+    deps:
+      - models/train.py
+      - models/transfer_learning.py
+      - data/processed  
+    outs:
+      - models/cat_dog_classifier.h5  
+
+  evaluate:
+    cmd: python -m models.evaluate
+    deps:
+      - models/evaluate.py
+      - models/cat_dog_classifier.h5  
+    outs:
+      - metrics.json  

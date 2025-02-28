@@ -1,0 +1,14 @@
+training:
+  batch_size: 32
+  epochs: 10
+  image_size: 150
+
+model:
+  base_model: "MobileNetV2"
+  freeze_layers: true
+  dropout_rate: 0.5
+
+paths:
+  train_dir: "data/raw/training_set/training_set"
+  test_dir: "data/raw/test_set/test_set"
+  processed_dir: "data/processed"

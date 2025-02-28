@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Machine%20Learning%20Projects/cat-vs-dog-classifier/mlruns/225209517847558010/c2fda5b818c144029486857fc03bf4fe/artifacts
+end_time: 1740481426172
+entry_point_name: ''
+experiment_id: '225209517847558010'
+lifecycle_stage: active
+run_id: c2fda5b818c144029486857fc03bf4fe
+run_name: secretive-ox-159
+run_uuid: c2fda5b818c144029486857fc03bf4fe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740480863518
+status: 3
+tags: []
+user_id: parks

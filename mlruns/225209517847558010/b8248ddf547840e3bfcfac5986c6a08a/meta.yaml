@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Machine%20Learning%20Projects/cat-vs-dog-classifier/mlruns/225209517847558010/b8248ddf547840e3bfcfac5986c6a08a/artifacts
+end_time: 1740463264924
+entry_point_name: ''
+experiment_id: '225209517847558010'
+lifecycle_stage: active
+run_id: b8248ddf547840e3bfcfac5986c6a08a
+run_name: exultant-fowl-822
+run_uuid: b8248ddf547840e3bfcfac5986c6a08a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1740462804740
+status: 3
+tags: []
+user_id: parks

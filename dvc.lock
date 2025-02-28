@@ -1,0 +1,62 @@
+schema: '2.0'
+stages:
+  prepare_data:
+    cmd: python -m data.data_prep
+    deps:
+    - path: data/data_prep.py
+      hash: md5
+      md5: 619ff558934a161ccfbe697d2c099a33
+      size: 2545
+    - path: data/raw/test_set/test_set
+      hash: md5
+      md5: 662631c5b03e3ab00175a03dd175edf6.dir
+      size: 46277083
+      nfiles: 2025
+    - path: data/raw/training_set/training_set
+      hash: md5
+      md5: 99f571bd3f9dc244d2814f84fac21ef2.dir
+      size: 182182302
+      nfiles: 8007
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 28e361ce2e280c6593a0ae249ce17133.dir
+      size: 93
+      nfiles: 1
+  train:
+    cmd: python -m models.train
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 28e361ce2e280c6593a0ae249ce17133.dir
+      size: 93
+      nfiles: 1
+    - path: models/train.py
+      hash: md5
+      md5: 18c775f7fe499e0e5d25c808b6c64ff8
+      size: 428
+    - path: models/transfer_learning.py
+      hash: md5
+      md5: a4e742c8ed054eaef053625e053250f1
+      size: 759
+    outs:
+    - path: models/cat_dog_classifier.h5
+      hash: md5
+      md5: 8b08fcb3a9e03ade0e860562e3766714
+      size: 13342824
+  evaluate:
+    cmd: python -m models.evaluate
+    deps:
+    - path: models/cat_dog_classifier.h5
+      hash: md5
+      md5: 8b08fcb3a9e03ade0e860562e3766714
+      size: 13342824
+    - path: models/evaluate.py
+      hash: md5
+      md5: 4b575a34c27028ac2ddd34e306e97bf3
+      size: 922
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: f82a1a8f0d1af420381f7c20ae1822c6
+      size: 34
