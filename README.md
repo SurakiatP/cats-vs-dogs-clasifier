@@ -1,6 +1,6 @@
 # Cat vs Dog Classifier
 
-![Project Banner](![alt text](image.png))
+![Project Banner](image.png)
 
 Cat vs Dog Classifier is a project that uses **Convolutional Neural Networks (CNN)** and **Transfer Learning** from **MobileNetV2** to classify images of cats and dogs. This project is built with **TensorFlow/Keras** and uses **DVC** for data and model version control, along with **GitHub Actions** for CI/CD.
 
@@ -165,7 +165,7 @@ See the details in the [`.github/workflows/ci.yml`](.github/workflows/ci.yml) fi
 
 Below is an example of the model prediction:
 
-![Example Prediction](![alt text](image-1.png))
+![Example Prediction](image-1.png)
 
 > **Note:** The example image shows a prediction output like "Dog 🐶" or "Cat 🐱".  
 > You can update the sample image as needed.
