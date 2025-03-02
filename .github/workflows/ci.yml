@@ -24,16 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-ci.txt
 
-      - name: Authenticate DVC with Google Drive
+      - name: Configure DVC
         run: |
-          # 1. Write service account JSON to a file
-          echo "${{ secrets.GDRIVE_CREDENTIALS }}" > gdrive-credentials.json
-
-          # 2. Tell DVC to use a service account (no user login)
-          dvc remote modify gdrive_remote gdrive_use_service_account true
-
-          # 3. Store the key path in local config (avoid 'extra keys not allowed')
-          dvc remote modify gdrive_remote --local gdrive_service_account_json gdrive-credentials.json
+          dvc remote modify gdrive_remote url "gdrive://${{ secrets.GDRIVE_FOLDER_ID }}/cat-vs-dog-classifier"
+          dvc remote modify gdrive_remote gdrive_client_id "${{ secrets.GDRIVE_CLIENT_ID }}"
+          dvc remote modify gdrive_remote gdrive_client_secret "${{ secrets.GDRIVE_CLIENT_SECRET }}"
+        env:
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
 
       - name: Pull Data from DVC
         run: dvc pull
