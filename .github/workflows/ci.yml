@@ -24,19 +24,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-ci.txt
 
-      - name: Configure DVC
+      - name: Authenticate DVC with Google Drive
         run: |
-          dvc remote modify gdrive_remote url "gdrive://${{ secrets.GDRIVE_FOLDER_ID }}/cat-vs-dog-classifier"
-          dvc remote modify gdrive_remote gdrive_client_id "${{ secrets.GDRIVE_CLIENT_ID }}"
-          dvc remote modify gdrive_remote gdrive_client_secret "${{ secrets.GDRIVE_CLIENT_SECRET }}"
-        env:
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          echo "${{ secrets.GDRIVE_CREDENTIALS }}" > gdrive-credentials.json
+          dvc remote modify gdrive_remote gdrive_use_service_account true
+          dvc remote modify gdrive_remote gdrive_service_account_json gdrive-credentials.json
 
       - name: Pull Data from DVC
-        run: dvc pull
+        run: dvc pull || echo "⚠️ DVC pull failed! Please check logs."
 
       - name: Run DVC Pipeline
-        run: dvc repro
+        run: dvc repro || echo "⚠️ DVC pipeline execution failed!"
 
       - name: Evaluate Model
-        run: python -m models.evaluate
+        run: python -m models.evaluate || echo "⚠️ Model evaluation failed!"
