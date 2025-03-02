@@ -2,10 +2,9 @@ import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-# กำหนด path สำหรับข้อมูลดิบ
 BASE_DIR = "./data/raw"
-TRAIN_DIR = os.path.join(BASE_DIR, "training_set/training_set")  # ตรวจสอบให้ตรงกับโครงสร้าง
-TEST_DIR = os.path.join(BASE_DIR, "test_set/test_set")            # ตรวจสอบให้ตรงกับโครงสร้าง
+TRAIN_DIR = os.path.join(BASE_DIR, "training_set/training_set")  
+TEST_DIR = os.path.join(BASE_DIR, "test_set/test_set")            
 
 if not os.path.exists(TRAIN_DIR) or not os.listdir(TRAIN_DIR):
     raise FileNotFoundError(f"❌ No training images found in '{TRAIN_DIR}'. Please add dataset first!")
@@ -13,12 +12,11 @@ if not os.path.exists(TRAIN_DIR) or not os.listdir(TRAIN_DIR):
 # Data Augmentation
 train_datagen = ImageDataGenerator(
     rescale=1./255,
-    validation_split=0.2  # ใช้ subset สำหรับ train/val split
+    validation_split=0.2  
 )
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-# สร้าง generator สำหรับ train และ validation
 train_generator = train_datagen.flow_from_directory(
     TRAIN_DIR,
     target_size=(150, 150),
@@ -35,7 +33,6 @@ val_generator = train_datagen.flow_from_directory(
     subset='validation'
 )
 
-# สร้าง generator สำหรับ test
 test_generator = test_datagen.flow_from_directory(
     TEST_DIR,
     target_size=(150, 150),
@@ -51,11 +48,9 @@ def prepare_data():
     return train_generator, val_generator, test_generator
 
 if __name__ == "__main__":
-    # สร้างโฟลเดอร์ output ที่ DVC คาดหวัง (data/processed)
     processed_dir = "data/processed"
     os.makedirs(processed_dir, exist_ok=True)
 
-    # บันทึกไฟล์สรุปข้อมูลเพื่อให้ DVC รับรู้ว่า stage นี้ได้สร้าง output แล้ว
     summary_file = os.path.join(processed_dir, "info.txt")
     with open(summary_file, "w") as f:
         f.write("Data Preparation Summary\n")

@@ -20,7 +20,7 @@ def predict(image_path):
     return "Dog 🐶" if prediction[0][0] > 0.5 else "Cat 🐱"
 
 if __name__ == "__main__":
-    img_path = "data/raw/test_set/test_set/dogs/dog.4001.jpg"  # ใส่ path ของรูปที่ต้องการทดสอบ
+    img_path = "data/raw/test_set/test_set/dogs/dog.4001.jpg" 
     result = predict(img_path)
     print(f"Prediction: {result}")
 
